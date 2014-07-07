@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.6
+version = '0.8'
+
+idea {
+    module {
+        downloadJavadoc = true // not sure if it does anything
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.hadoop:hadoop-common:2.4.0+'
+    compile 'org.apache.hadoop:hadoop-mapreduce-client-core:2.4.0+'
+    testCompile group: 'org.testng', name: 'testng', version: '6.5.2'
+    testCompile 'org.apache.hadoop:hadoop-streaming:2.4.0+' // just to grab JavaDoc and sources
+}
+
+test {
+    useTestNG()
+}
+
